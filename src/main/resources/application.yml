@@ -1,0 +1,26 @@
+server:
+  port: 8888
+  
+spring:
+  application:
+    name: distributed-lock
+  redis:
+    # redis单机版的写法
+    host: 192.168.2.43
+    port: 6379
+    # 集群的写法
+    #cluster:
+      #nodes:
+      #- 192.168.0.106,192.168.0.107
+    #哨兵的写法
+    #sentinel:
+      #master: 192.168.0.106
+      #nodes:
+      #- 192.168.0.107,192.168.0.108
+# curator相关配置
+curator:
+  retryCount: 5 # 连接失败的重试次数
+  retryTimeInterval: 5000 # 每隔5秒重试一次
+  url: 192.168.2.43:2181 # zookeeper连接地址
+  sessionTimeout: 60000 # session超时时间1分钟
+  connectionTimeout: 5000 # 连接超时时间5秒钟
